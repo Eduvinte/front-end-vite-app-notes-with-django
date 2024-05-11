@@ -6,8 +6,10 @@ import { Auth } from "../redux/Auth";
 import { GetNotes } from "../redux/GetNotes";
 import '../styles/createNotes.css'
 const CreateNotes = () => {
+
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
+  const [showCreateNote, setShowCreateNotes] = useState(false)
 
   const notes = useSelector((state) => state.notes.notes)
 
@@ -28,12 +30,14 @@ const CreateNotes = () => {
   return (
     <div className='container-create-notes'>
 
-      <div className='container-create'>
+      <div className="container-btn-close">
+        <p className="btn-close" onClick={() => setShowCreateNotes(!showCreateNote)}>X</p>
+      </div>
+
+      <div className='container-create' style={{ display: showCreateNote ? 'none' : 'flex' }}>
         <h2 className='title-create-notes'>Crear Notas</h2>
-        <div className="container-btn-form">
-          <div className="container-btn-close">
-            <p className="btn-close">X</p>
-          </div>
+        <div className="container-btn-form" >
+
           <form onSubmit={handleSubmit} className='form-login-notes'>
             <input type='text' onChange={(e) => setTitle(e.target.value)} value={title} placeholder='Titulo de la nota' />
             <input type='text' onChange={(e) => setDescription(e.target.value)} value={description} placeholder='Descripcion de la nota' />

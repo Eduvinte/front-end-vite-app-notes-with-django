@@ -6,6 +6,10 @@
     padding: 20px;
 }
 
+.container-nav {
+    width: 100%;
+}
+
 .container-nav-list {
     display: flex;
     align-items: center;

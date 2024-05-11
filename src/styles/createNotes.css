@@ -147,9 +147,10 @@
 }
 
 .container-btn-close {
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
+    margin-top: 10%;
 }
 
 @media (max-width: 600px) {
@@ -171,6 +172,9 @@
     }
     .note {
         width: 95%;
+    }
+    .container-btn-close {
+        display: flex;
     }
 }
 
