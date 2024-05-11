@@ -30,9 +30,18 @@ const CreateNotes = () => {
   return (
     <div className='container-create-notes'>
 
-      <div className="container-btn-close">
-        <p className="btn-close" onClick={() => setShowCreateNotes(!showCreateNote)}>X</p>
-      </div>
+
+      {
+        showCreateNote ?
+          <div className="container-btn-close">
+            <p className="btn-close" onClick={() => setShowCreateNotes(!showCreateNote)}>A</p>
+          </div>
+          :
+          <div className="container-btn-close">
+            <p className="btn-close" onClick={() => setShowCreateNotes(!showCreateNote)}>X</p>
+          </div>
+      }
+
 
       <div className='container-create' style={{ display: showCreateNote ? 'none' : 'flex' }}>
         <h2 className='title-create-notes'>Crear Notas</h2>
