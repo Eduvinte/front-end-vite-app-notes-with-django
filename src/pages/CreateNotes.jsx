@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { CreateNote } from "../redux/CreateNote";
 import { Auth } from "../redux/Auth";
 import { GetNotes } from "../redux/GetNotes";
+import { DeleteNote } from "../redux/DeleteNote";
 import '../styles/createNotes.css'
 const CreateNotes = () => {
 
@@ -63,7 +64,7 @@ const CreateNotes = () => {
               <div key={note.id} className='note'>
                 <div className='container-buttons'>
                   <button className='button-edit'>Editar</button>
-                  <button className='button-delete'>Eliminar</button>
+                  <button className='button-delete' onClick={() => dispatch(DeleteNote(note.id))}>Eliminar</button>
                 </div>
                 <h3 className='title-note'>{note.title}</h3>
                 <p className='description-note'>{note.description}</p>
