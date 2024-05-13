@@ -5,13 +5,15 @@ import { CreateNote } from "../redux/CreateNote";
 import { Auth } from "../redux/Auth";
 import { GetNotes } from "../redux/GetNotes";
 import { DeleteNote } from "../redux/DeleteNote";
+import Modal from "../componentes/Modal";
 import '../styles/createNotes.css'
 const CreateNotes = () => {
 
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [showCreateNote, setShowCreateNotes] = useState(false)
-
+  const [showModal, setShowModal] = useState(false)
+  const [idNote, setIdNote] = useState('')
   const notes = useSelector((state) => state.notes.notes)
 
   const dispatch = useDispatch()
@@ -28,9 +30,17 @@ const CreateNotes = () => {
     dispatch(CreateNote({ title, description }))
   }
 
+  const handleInfoModal = (id) => {
+    setIdNote(id)
+    setShowModal(!showModal)
+  }
   return (
     <div className='container-create-notes'>
 
+      <Modal 
+        idNote={idNote}
+        setShowModal={showModal}
+      />
 
       {
         showCreateNote ?
@@ -63,7 +73,7 @@ const CreateNotes = () => {
             return (
               <div key={note.id} className='note'>
                 <div className='container-buttons'>
-                  <button className='button-edit'>Editar</button>
+                  <button className='button-edit' onClick={() => handleInfoModal(note.id)}>Editar</button>
                   <button className='button-delete' onClick={() => dispatch(DeleteNote(note.id))}>Eliminar</button>
                 </div>
                 <h3 className='title-note'>{note.title}</h3>
@@ -72,6 +82,10 @@ const CreateNotes = () => {
             )
           })
         }
+      </div>
+
+      <div className="bottom-closed" style={{ display: showModal ? 'flex' : 'none' }} onClick={() => setShowModal(!showModal)}>
+        <p>X</p>
       </div>
 
     </div>

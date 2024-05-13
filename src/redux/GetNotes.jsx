@@ -4,7 +4,7 @@ import { toast } from 'react-toastify'
 
 export const GetNotes = createAsyncThunk('notes/getNotes', async (payload) => {
     try {
-        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}api/notes/?user=${localStorage.getItem('token')}`, {
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}api/notes/?user=${localStorage.getItem('idUser')}`, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
