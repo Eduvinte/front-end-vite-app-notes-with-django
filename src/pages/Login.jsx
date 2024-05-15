@@ -20,7 +20,7 @@ function Login() {
   return (
     <div className='container-login'>
       <form onSubmit={handleSubmit} className='form-login'>
-        <input type='text' onChange={(e) => setUsername(e.target.value)} value={username} placeholder='Correo electronico' />
+        <input type='text' onChange={(e) => setUsername(e.target.value)} value={username} placeholder='Usuario' />
         <input type='password' onChange={(e) => setPassword(e.target.value)} value={password} placeholder='Contraseña' />
         <button type='submit'>Entrar</button>
       </form>

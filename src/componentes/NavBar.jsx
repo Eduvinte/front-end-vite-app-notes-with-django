@@ -1,13 +1,14 @@
 import '../styles/NavBar.css'
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import logo from '../assets/logo.png'
 import toggleMenu  from '../assets/toggle-menu.svg'
+import { logout } from '../redux/Auth'
 
 const NavBar = () => {
 
-
+    const disptach = useDispatch()
     const [token, setToken] = useState(null)
     const [showNav, setShowNav] = useState(false)
     const user = useSelector(state => state.Auth.user)
@@ -33,7 +34,7 @@ const NavBar = () => {
                     {!token ? <li><Link className="btn-enter" to="/login">Entrar</Link></li> : null}
                     {!token ? <li><Link className="btn-register" to="/register">Registrar</Link></li> : null}
                     {token ? <li><Link className="btn-create-note" to="/create-notes">Crear Notas</Link></li> : null}
-                    {token ? <li><Link to="/login">Salir</Link></li> : null}
+                    {token ? <li><Link to="/login" onClick={() =>disptach(logout())}>Salir</Link></li> : null}
                     <li><Link className="btn" to="/contact">Contacto</Link></li>
                 </ul>
             </div>
