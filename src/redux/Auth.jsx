@@ -18,6 +18,13 @@ export const Auth = createAsyncThunk(
 const AuthSlice = createSlice({
     name: "Auth",
     initialState: { error: null, loading: false, token: null, refresh: null, user: false, idUser: null },
+    reducers: {
+        logout: () => {
+            localStorage.removeItem('token')
+            localStorage.removeItem('refresh')
+            window.location.href = '/'
+        }
+    },
     extraReducers: (builder) => {
         builder.addCase(Auth.pending, (state, action) => {
             state.loading = true
@@ -38,5 +45,6 @@ const AuthSlice = createSlice({
     }
 })
 
+export const { logout } = AuthSlice.actions
 export default AuthSlice.reducer
 
