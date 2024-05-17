@@ -4,6 +4,7 @@ import App from './App'
 import Login from './pages/Login'
 import CreateNotes from './pages/CreateNotes'
 import ProtectRoutes from './componentes/ProtectRoutes'
+import RegisterUser from './pages/RegisterUser'
 
 const Router = () => {
     return (
@@ -11,6 +12,7 @@ const Router = () => {
         <Route path='/' element={<App />} />
         <Route path='/login' element={<Login />} />
         <Route path='/create-notes' element={ <ProtectRoutes><CreateNotes /></ProtectRoutes> } />
+        <Route path='/register-user' element={ <RegisterUser /> } />
     </Routes>
     )
 }

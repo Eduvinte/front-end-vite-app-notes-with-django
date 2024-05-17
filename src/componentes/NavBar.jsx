@@ -32,7 +32,7 @@ const NavBar = () => {
                 <ul className="container-nav-list">
                     <li><Link className="#" to="/">Inicio</Link></li>
                     {!token ? <li><Link className="btn-enter" to="/login">Entrar</Link></li> : null}
-                    {!token ? <li><Link className="btn-register" to="/register">Registrar</Link></li> : null}
+                    {!token ? <li><Link className="btn-register" to="/register-user">Registrar</Link></li> : null}
                     {token ? <li><Link className="btn-create-note" to="/create-notes">Crear Notas</Link></li> : null}
                     {token ? <li><Link to="/login" onClick={() =>disptach(logout())}>Salir</Link></li> : null}
                     <li><Link className="btn" to="/contact">Contacto</Link></li>
